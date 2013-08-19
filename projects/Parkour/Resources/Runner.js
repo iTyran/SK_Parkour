@@ -1,7 +1,7 @@
 // define enum for runner status
 if(typeof RunnerStat == "undefined") {
     var RunnerStat = {};
-    RunnerStat.normal = 0;
+    RunnerStat.running = 0;
     RunnerStat.jumpUp = 1;
     RunnerStat.jumpDown = 2;
     RunnerStat.crouch = 3;
@@ -11,13 +11,13 @@ if(typeof RunnerStat == "undefined") {
 // runner class
 var Runner = cc.Node.extend({
     sprite:null,
-    normalSize:null,
+    runningSize:null,
     crouchSize:null,
     space:null,
     body:null,// current chipmunk body
     shape:null,// current chipmunk shape
-    stat:RunnerStat.normal,// init with normal status
-    normalAction:null,
+    stat:RunnerStat.running,// init with running status
+    runningAction:null,
     jumpUpAction:null,
     jumpDownAction:null,
     crouchAction:null,
@@ -36,23 +36,23 @@ var Runner = cc.Node.extend({
         this._super();
 
         this.sprite = cc.PhysicsSprite.createWithSpriteFrameName("runner0.png");
-        this.normalSize = this.sprite.getContentSize();
+        this.runningSize = this.sprite.getContentSize();
 
         var tmpSprite = cc.PhysicsSprite.createWithSpriteFrameName("runnerCrouch0.png");
         this.crouchSize = tmpSprite.getContentSize();
 
         this.initAction();
         this.initBody();
-        this.initShape("normal");
+        this.initShape("running");
 
         this.sprite.setBody(this.body);
-        this.sprite.runAction(this.normalAction);
+        this.sprite.runAction(this.runningAction);
         this.spriteSheet.addChild(this.sprite, 1);
-        this.stat = RunnerStat.normal;
+        this.stat = RunnerStat.running;
     },
 
     onExit:function() {
-        this.normalAction.release();
+        this.runningAction.release();
         this.jumpUpAction.release();
         this.jumpDownAction.release();
         this.crouchAction.release();
@@ -61,7 +61,7 @@ var Runner = cc.Node.extend({
     },
 
     initAction:function () {
-        // init normalAction
+        // init runningAction
         var animFrames = [];
         // num equal to spriteSheet
         for (var i = 0; i < 8; i++) {
@@ -71,8 +71,8 @@ var Runner = cc.Node.extend({
         }
 
         var animation = cc.Animation.create(animFrames, 0.1);
-        this.normalAction = cc.RepeatForever.create(cc.Animate.create(animation));
-        this.normalAction.retain();
+        this.runningAction = cc.RepeatForever.create(cc.Animate.create(animation));
+        this.runningAction.retain();
         
         // init jumpUpAction
         animFrames = [];
@@ -114,8 +114,8 @@ var Runner = cc.Node.extend({
     initBody:function () {
         // create chipmunk body
         this.body = new cp.Body(1, cp.momentForBox(1,
-                    this.normalSize.width, this.normalSize.height));
-        this.body.p = cc.p(this.offsetPx, g_groundHight + this.normalSize.height / 2);
+                    this.runningSize.width, this.runningSize.height));
+        this.body.p = cc.p(this.offsetPx, g_groundHight + this.runningSize.height / 2);
         this.body.v = cp.v(150, 0);//run speed
         this.space.addBody(this.body);
     },
@@ -129,9 +129,9 @@ var Runner = cc.Node.extend({
         if (this.shape) {
             this.space.removeShape(this.shape);
         }
-        if (type == "normal") {
+        if (type == "running") {
             this.shape = new cp.BoxShape(this.body,
-                    this.normalSize.width, this.normalSize.height);
+                    this.runningSize.width, this.runningSize.height);
         } else {
             // crouch
             this.shape = new cp.BoxShape(this.body,
@@ -145,12 +145,12 @@ var Runner = cc.Node.extend({
         return this.sprite.getPositionX();
     },
 
-    normalHulk:function () {
+    runningHulk:function () {
         // slow down
         this.body.applyImpulse(cp.v(-200, 0), cp.v(0, 0));
-        this.stat = RunnerStat.normal;
+        this.stat = RunnerStat.running;
         this.sprite.stopAllActions();
-        this.sprite.runAction(this.normalAction);
+        this.sprite.runAction(this.runningAction);
         // clean screen, to avoid rock
         this.getParent().cleanScreen();
     },
@@ -159,7 +159,7 @@ var Runner = cc.Node.extend({
         this.stat = RunnerStat.incredible;
         // run faster
         this.body.applyImpulse(cp.v(200, 0), cp.v(0, 0));
-        this.scheduleOnce(this.normalHulk, 3.0);
+        this.scheduleOnce(this.runningHulk, 3.0);
     },
 
     // return:
@@ -176,7 +176,7 @@ var Runner = cc.Node.extend({
     },
 
     jump:function () {
-        if (this.stat == RunnerStat.normal) {
+        if (this.stat == RunnerStat.running) {
             this.body.applyImpulse(cp.v(0, 250), cp.v(0, 0));
             this.stat = RunnerStat.jumpUp;
             this.sprite.stopAllActions();
@@ -185,21 +185,21 @@ var Runner = cc.Node.extend({
     },
     
     crouch:function () {
-        if (this.stat == RunnerStat.normal) {
+        if (this.stat == RunnerStat.running) {
             this.initShape("crouch");
             this.sprite.stopAllActions();
             this.sprite.runAction(this.crouchAction);
             this.stat = RunnerStat.crouch;
-            // after time turn to normal stat
+            // after time turn to running stat
             this.scheduleOnce(this.loadNormal, 1.0);
         }
     },
 
     loadNormal:function (dt) {
-        this.initShape("normal");
+        this.initShape("running");
         this.sprite.stopAllActions();
-        this.sprite.runAction(this.normalAction);
-        this.stat = RunnerStat.normal;
+        this.sprite.runAction(this.runningAction);
+        this.stat = RunnerStat.running;
     },
 
     step:function (dt) {
@@ -214,9 +214,9 @@ var Runner = cc.Node.extend({
         }
         if (this.stat == RunnerStat.jumpDown) {
             if (vel.y == 0) {
-                this.stat = RunnerStat.normal;
+                this.stat = RunnerStat.running;
                 this.sprite.stopAllActions();
-                this.sprite.runAction(this.normalAction);
+                this.sprite.runAction(this.runningAction);
             }
             return;
         }

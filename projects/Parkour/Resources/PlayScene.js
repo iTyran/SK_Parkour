@@ -29,24 +29,25 @@ var PlayLayer = cc.Layer.extend({
     ctor:function () {
         this._super();
 
-        // objects will keep when new ObjectManager();
-        // we need clean here
-        this.shapesToRemove = [];
-        this.dollar = new DollarRecognizer();
-
         this.init();
     },
 
     init:function () {
         this._super();
 
+        // objects will keep when new ObjectManager();
+        // we need clean here
+        this.shapesToRemove = [];
+
         this.setTag(0);
         this.initPhysics();
 
-        // set touch mode
+        // enable touch
         this.setTouchEnabled(true);
+        // set touch mode to kCCTouchesOneByOne
         this.setTouchMode(1);
         
+        this.dollar = new DollarRecognizer();
         this.recognizer = new SimpleRecognizer();
 
         this.map = new Map(this, this.space);

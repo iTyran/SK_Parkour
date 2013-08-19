@@ -21,6 +21,13 @@ var MainLayer = cc.Layer.extend({
         var menu = cc.Menu.create(menuItemPlay);
         menu.setPosition(centerPos);
         this.addChild(menu);
+
+        // preload music
+        audioEngine.preloadMusic("background.mp3");
+        audioEngine.preloadEffect("jump.mp3");
+        audioEngine.preloadEffect("crouch.mp3");
+
+        audioEngine.setMusicVolume(0.3);
     },
 
     // on play button clicked
@@ -38,6 +45,7 @@ MainLayer.scene = function () {
 
 // main entry
 try {
+    audioEngine = cc.AudioEngine.getInstance();
     director = cc.Director.getInstance();
     winSize = director.getWinSize();
     // run first scene

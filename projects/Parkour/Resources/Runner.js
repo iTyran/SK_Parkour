@@ -181,6 +181,8 @@ var Runner = cc.Node.extend({
             this.stat = RunnerStat.jumpUp;
             this.sprite.stopAllActions();
             this.sprite.runAction(this.jumpUpAction);
+
+            audioEngine.playEffect("jump.mp3");
         }
     },
     
@@ -192,6 +194,8 @@ var Runner = cc.Node.extend({
             this.stat = RunnerStat.crouch;
             // after time turn to running stat
             this.scheduleOnce(this.loadNormal, 1.0);
+
+            audioEngine.playEffect("crouch.mp3");
         }
     },
 

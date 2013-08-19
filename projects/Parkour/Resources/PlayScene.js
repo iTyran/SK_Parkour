@@ -64,6 +64,8 @@ var PlayLayer = cc.Layer.extend({
         this.objectManager = new ObjectManager(this.spriteSheet, this.space);
         this.objectManager.initObjectOfMap(1, this.map.getMapWidth());
 
+        audioEngine.playMusic("background.mp3", true);
+
         //Schedules the "update" method
         this.scheduleUpdate();
     },
@@ -130,7 +132,8 @@ var PlayLayer = cc.Layer.extend({
 
         var statusLayer = this.getParent().getChildByTag(1);
         statusLayer.addCoin(1);
-        //TODO: playerEffect
+
+        audioEngine.playEffect("pickup_coin.mp3");
     },
 
     collisionRockBegin:function (arbiter, space) {
@@ -139,6 +142,8 @@ var PlayLayer = cc.Layer.extend({
             this.gameStat = GameStat.over;
             var gameover = new GameOverLayer();
             this.getParent().addChild(gameover);
+
+            audioEngine.stopMusic();
         } else {
             // break Rock
             var shapes = arbiter.getShapes();

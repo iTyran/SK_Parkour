@@ -4,7 +4,7 @@ var Map = cc.Class.extend({
     layer:null,
     space:null,
     spriteWidth:0,
-    mapCount:1,// total map of resource
+    mapCount:2,// total map of resource
     map0:null,
     map1:null,
     ground0:null,
@@ -28,13 +28,12 @@ var Map = cc.Class.extend({
 
         this.spriteWidth = this.map0.getContentSize().width;
 
-        //FIXME: wait for Map01 resource
-        this.map1 = cc.Sprite.create("Map00.png");
+        this.map1 = cc.Sprite.create("Map01.png");
         this.map1.setAnchorPoint(cc.p(0, 0));
         this.map1.setPosition(cc.p(this.spriteWidth, 0));
         this.layer.addChild(this.map1);
 
-        this.ground1 = cc.Sprite.create("Ground00.png");
+        this.ground1 = cc.Sprite.create("Ground01.png");
         this.ground1.setAnchorPoint(cc.p(0, 0));
         this.ground1.setPosition(cc.p(this.spriteWidth, g_groundHight - size.height));
         this.layer.addChild(this.ground1);

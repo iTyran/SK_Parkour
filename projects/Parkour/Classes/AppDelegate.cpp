@@ -40,14 +40,9 @@ bool AppDelegate::applicationDidFinishLaunching()
     
     vector<string> searchPath;
     
-    float largeGap = (largeResource.size.height - mediumResource.size.height) / 2;
     float mediumGap = (mediumResource.size.height - smallResource.size.height) / 2;
     
-	if (frameSize.height > (mediumResource.size.height + largeGap))
-	{
-        searchPath.push_back(largeResource.directory);
-        pDirector->setContentScaleFactor(largeResource.size.height/designResolutionSize.height);
-	} else if (frameSize.height > (smallResource.size.height + mediumGap)) {
+	if (frameSize.height > (smallResource.size.height + mediumGap)) {
         searchPath.push_back(mediumResource.directory);
         pDirector->setContentScaleFactor(mediumResource.size.height/designResolutionSize.height);
     } else {

@@ -37,7 +37,6 @@
 		0A31F1B717AFAEBC00CA84CB /* Coin.js in Resources */ = {isa = PBXBuildFile; fileRef = 0A31F1B517AFAC4000CA84CB /* Coin.js */; };
 		0A41BA8617B48C0900F61161 /* dollar.js in Sources */ = {isa = PBXBuildFile; fileRef = 0A41BA8517B48C0900F61161 /* dollar.js */; };
 		0A41BA8717B48C1700F61161 /* dollar.js in Resources */ = {isa = PBXBuildFile; fileRef = 0A41BA8517B48C0900F61161 /* dollar.js */; };
-		0A42308C17B8E42300E78A0F /* ipadhd in Resources */ = {isa = PBXBuildFile; fileRef = 0A42308B17B8E42300E78A0F /* ipadhd */; };
 		15A3D2F71682F08C002FB0C5 /* libcocos2dx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A3D2F41682F076002FB0C5 /* libcocos2dx.a */; };
 		15A3D31F1682F0A0002FB0C5 /* cocos2d_specifics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15A3D2FA1682F0A0002FB0C5 /* cocos2d_specifics.cpp */; };
 		15A3D3201682F0A0002FB0C5 /* cocosjs_manual_conversions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15A3D2FC1682F0A0002FB0C5 /* cocosjs_manual_conversions.cpp */; };
@@ -243,7 +242,6 @@
 		0A31F1A417AFA16E00CA84CB /* Utils.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = Utils.js; path = ../Resources/Utils.js; sourceTree = "<group>"; };
 		0A31F1B517AFAC4000CA84CB /* Coin.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = Coin.js; path = ../Resources/Coin.js; sourceTree = "<group>"; };
 		0A41BA8517B48C0900F61161 /* dollar.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = dollar.js; path = ../Resources/dollar.js; sourceTree = "<group>"; };
-		0A42308B17B8E42300E78A0F /* ipadhd */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ipadhd; path = ../Resources/ipadhd; sourceTree = "<group>"; };
 		15A3D2EC1682F076002FB0C5 /* cocos2dx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2dx.xcodeproj; path = ../../../cocos2dx/proj.ios/cocos2dx.xcodeproj; sourceTree = "<group>"; };
 		15A3D2FA1682F0A0002FB0C5 /* cocos2d_specifics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cocos2d_specifics.cpp; sourceTree = "<group>"; };
 		15A3D2FB1682F0A0002FB0C5 /* cocos2d_specifics.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = cocos2d_specifics.hpp; sourceTree = "<group>"; };
@@ -581,7 +579,6 @@
 		15628F5B15F0F5C2000CF24B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				0A42308B17B8E42300E78A0F /* ipadhd */,
 				0A31F19A17AFA16600CA84CB /* ipad */,
 				0A31F19B17AFA16600CA84CB /* iphone */,
 				0A31F1B517AFAC4000CA84CB /* Coin.js */,
@@ -1275,7 +1272,6 @@
 				0A31F19917AFA15500CA84CB /* Icon-144.png in Resources */,
 				0A31F19C17AFA16600CA84CB /* ipad in Resources */,
 				0A31F19D17AFA16600CA84CB /* iphone in Resources */,
-				0A42308C17B8E42300E78A0F /* ipadhd in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

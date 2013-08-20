@@ -227,3 +227,11 @@ var Runner = cc.Node.extend({
     },
 });
 
+var gRunnerCrouchContentSize = null;
+Rock.getCrouchContentSize = function () {
+    if (null == gRunnerCrouchContentSize) {
+        var sprite = cc.PhysicsSprite.createWithSpriteFrameName("runnerCrouch0.png");
+        gRunnerCrouchContentSize = sprite.getContentSize();
+    }
+    return gRunnerCrouchContentSize;
+};

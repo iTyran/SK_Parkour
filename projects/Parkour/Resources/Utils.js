@@ -1,7 +1,4 @@
 var g_groundHight = 50;//FIXME
-var g_coinHeight = 60;
-var g_initCoinNum = 7;
-var g_jumpRockHeight = 60;
 
 function FormatNumberLength(num, length) {
     var r = "" + num;

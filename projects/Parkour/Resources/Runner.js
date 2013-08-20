@@ -1,4 +1,5 @@
 // define enum for runner status
+
 if(typeof RunnerStat == "undefined") {
     var RunnerStat = {};
     RunnerStat.running = 0;
@@ -228,7 +229,7 @@ var Runner = cc.Node.extend({
 });
 
 var gRunnerCrouchContentSize = null;
-Rock.getCrouchContentSize = function () {
+Runner.getCrouchContentSize = function () {
     if (null == gRunnerCrouchContentSize) {
         var sprite = cc.PhysicsSprite.createWithSpriteFrameName("runnerCrouch0.png");
         gRunnerCrouchContentSize = sprite.getContentSize();

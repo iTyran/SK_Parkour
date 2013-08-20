@@ -15,6 +15,10 @@ var ObjectManager = cc.Class.extend({
     },
 
     initObjectOfMap:function (map, mapWidth) {
+        var initCoinNum = 7;
+        var jumpRockHeight = Runner.getCrouchContentSize().height + g_groundHight;
+        var coinHeight = Coin.getContentSize().height + g_groundHight;
+
         //random the center point of 7 coins.
         var randomCoinFactor = Math.round(Math.random()*2+1);
         var randomRockFactor = Math.round(Math.random()*2+1);
@@ -44,16 +48,16 @@ var ObjectManager = cc.Class.extend({
         log("randomRockFactor : "+randomRockFactor+" randomCoinFactor:"+randomCoinFactor );
 
         //add 7 coins
-        for(i = 0; i < g_initCoinNum; i++)
+        for(i = 0; i < initCoinNum; i++)
         {
             if((startx + i*xIncrement > RockPoint_x-rockWith/2) //岩石底部高度和陷阱顶部高度
                 &&(startx + i*xIncrement < RockPoint_x+rockWith/2))
             {
                 var coin1 = new Coin(this.spriteSheet, this.space,
-                        cc.p(startx + i*xIncrement, g_coinHeight+rockHeight));
+                        cc.p(startx + i*xIncrement, coinHeight+rockHeight));
             } else{
                 var coin1 = new Coin(this.spriteSheet, this.space,
-                        cc.p(startx + i*xIncrement, g_coinHeight));
+                        cc.p(startx + i*xIncrement, coinHeight));
             }
 
             coin1.map = map;
@@ -69,7 +73,7 @@ var ObjectManager = cc.Class.extend({
         //add jump rock
         var JumpRockPoint_x = mapWidth/4 * jumpRockFactor+mapWidth*map;
         var jumpRock = new Rock(this.spriteSheet, this.space,
-                cc.p(JumpRockPoint_x, g_jumpRockHeight+rockHeight/2));
+                cc.p(JumpRockPoint_x, jumpRockHeight+rockHeight/2));
         jumpRock.map = map;
         this.objects.push(jumpRock);
     },

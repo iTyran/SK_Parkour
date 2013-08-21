@@ -143,8 +143,9 @@ function DollarRecognizer() // constructor
 	//
 	// The $1 Gesture Recognizer API begins here -- 3 methods: Recognize(), AddGesture(), and DeleteUserGestures()
 	//
-	this.Recognize = function(points, useProtractor)
+	this.Recognize = function(point, useProtractor)
 	{
+        var points = TransPoints(point);
 		points = Resample(points, NumPoints);
 		var radians = IndicativeAngle(points);
 		points = RotateBy(points, -radians);
@@ -183,6 +184,15 @@ function DollarRecognizer() // constructor
 		this.Unistrokes.length = NumUnistrokes; // clear any beyond the original set
 		return NumUnistrokes;
 	}
+}
+
+function TransPoints(points){
+    var newPoints = new Array();
+    for (i = points.length - 1; i >= 0;i--) {
+        newPoints.push(points[i]);
+    }
+    return newPoints;
+
 }
 //
 // Private helper functions from this point down

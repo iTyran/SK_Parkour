@@ -133,7 +133,7 @@ var Runner = cc.Node.extend({
         }
         if (type == "running") {
             this.shape = new cp.BoxShape(this.body,
-                    this.runningSize.width, this.runningSize.height);
+                    this.runningSize.width - 14, this.runningSize.height);
         } else {
             // crouch
             this.shape = new cp.BoxShape(this.body,
@@ -207,7 +207,7 @@ var Runner = cc.Node.extend({
             this.sprite.runAction(this.crouchAction);
             this.stat = RunnerStat.crouch;
             // after time turn to running stat
-            this.scheduleOnce(this.loadNormal, 1.0);
+            this.scheduleOnce(this.loadNormal, 1.5);
 
             audioEngine.playEffect("crouch.mp3");
         }

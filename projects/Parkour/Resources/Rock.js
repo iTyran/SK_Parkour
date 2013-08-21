@@ -13,13 +13,19 @@ var Rock = cc.Class.extend({
     ctor:function (spriteSheet, space, pos) {
         this.space = space;
 
-        this.sprite = cc.PhysicsSprite.createWithSpriteFrameName("rock.png");
+        if (pos.y >= (g_groundHight + Runner.getCrouchContentSize().height)) {
+            this.sprite = cc.PhysicsSprite.createWithSpriteFrameName("hathpace.png");
+        } else {
+            this.sprite = cc.PhysicsSprite.createWithSpriteFrameName("rock.png");
+        }
 
         var body = new cp.StaticBody();
         body.setPos(pos);
         this.sprite.setBody(body);
 
-        this.shape = new cp.BoxShape(body, 40, 40);
+        this.shape = new cp.BoxShape(body,
+                this.sprite.getContentSize().width,
+                this.sprite.getContentSize().height);
         this.shape.setCollisionType(SpriteTag.rock);
         this.shape.setSensor(true);
 

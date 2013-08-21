@@ -7,7 +7,7 @@
             <key>coin0.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{40,215},{34,36}}</string>
+                <string>{{2,204},{34,36}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,7 +20,7 @@
             <key>coin1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{76,211},{30,36}}</string>
+                <string>{{70,198},{30,36}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,7 +33,7 @@
             <key>coin2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{108,205},{24,36}}</string>
+                <string>{{228,140},{24,36}}</string>
                 <key>offset</key>
                 <string>{-1,0}</string>
                 <key>rotated</key>
@@ -46,7 +46,7 @@
             <key>coin3.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{176,86},{14,36}}</string>
+                <string>{{174,133},{14,36}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,7 +59,7 @@
             <key>coin4.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{176,124},{8,36}}</string>
+                <string>{{118,48},{8,36}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -72,7 +72,7 @@
             <key>coin5.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{176,48},{14,36}}</string>
+                <string>{{174,95},{14,36}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -85,7 +85,7 @@
             <key>coin6.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{81,179},{24,36}}</string>
+                <string>{{190,140},{24,36}}</string>
                 <key>offset</key>
                 <string>{-1,0}</string>
                 <key>rotated</key>
@@ -98,11 +98,11 @@
             <key>coin7.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{43,179},{30,36}}</string>
+                <string>{{38,204},{30,36}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{3,0},{30,36}}</string>
                 <key>sourceSize</key>
@@ -111,20 +111,20 @@
             <key>hathpace.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{64,44}}</string>
+                <string>{{60,48},{56,40}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{0,1}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{64,44}}</string>
+                <string>{{0,1},{56,40}}</string>
                 <key>sourceSize</key>
-                <string>{64,44}</string>
+                <string>{56,44}</string>
             </dict>
             <key>rock.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{60,48},{56,44}}</string>
+                <string>{{190,51},{56,44}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -137,7 +137,7 @@
             <key>runner0.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{132,2},{62,44}}</string>
+                <string>{{66,2},{62,44}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -150,7 +150,7 @@
             <key>runner1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{192,55},{38,56}}</string>
+                <string>{{128,55},{38,56}}</string>
                 <key>offset</key>
                 <string>{4,0}</string>
                 <key>rotated</key>
@@ -163,7 +163,7 @@
             <key>runner2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{192,95},{32,54}}</string>
+                <string>{{58,124},{32,54}}</string>
                 <key>offset</key>
                 <string>{5,-1}</string>
                 <key>rotated</key>
@@ -176,7 +176,7 @@
             <key>runner3.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,97},{40,54}}</string>
+                <string>{{118,95},{40,54}}</string>
                 <key>offset</key>
                 <string>{4,-1}</string>
                 <key>rotated</key>
@@ -189,7 +189,7 @@
             <key>runner4.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{68,2},{62,44}}</string>
+                <string>{{2,2},{62,44}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -202,7 +202,7 @@
             <key>runner5.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{118,48},{42,56}}</string>
+                <string>{{2,48},{42,56}}</string>
                 <key>offset</key>
                 <string>{2,0}</string>
                 <key>rotated</key>
@@ -215,7 +215,7 @@
             <key>runner6.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{118,92},{32,56}}</string>
+                <string>{{60,90},{32,56}}</string>
                 <key>offset</key>
                 <string>{8,0}</string>
                 <key>rotated</key>
@@ -228,7 +228,7 @@
             <key>runner7.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{60,94},{40,54}}</string>
+                <string>{{2,92},{40,54}}</string>
                 <key>offset</key>
                 <string>{6,-1}</string>
                 <key>rotated</key>
@@ -241,7 +241,7 @@
             <key>runnerCrouch0.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,175},{39,38}}</string>
+                <string>{{56,158},{39,38}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -254,7 +254,7 @@
             <key>runnerJumpDown0.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{58,136},{41,45}}</string>
+                <string>{{190,97},{41,45}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -267,7 +267,7 @@
             <key>runnerJumpDown1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{196,2},{51,58}}</string>
+                <string>{{130,2},{51,58}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -280,7 +280,7 @@
             <key>runnerJumpUp0.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{116,126},{30,52}}</string>
+                <string>{{2,134},{30,52}}</string>
                 <key>offset</key>
                 <string>{8,-2}</string>
                 <key>rotated</key>
@@ -293,7 +293,7 @@
             <key>runnerJumpUp1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,139},{34,44}}</string>
+                <string>{{114,137},{34,44}}</string>
                 <key>offset</key>
                 <string>{5,-6}</string>
                 <key>rotated</key>
@@ -306,11 +306,11 @@
             <key>runnerJumpUp2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,215},{36,38}}</string>
+                <string>{{2,166},{36,38}}</string>
                 <key>offset</key>
                 <string>{3,-9}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{16,18},{36,38}}</string>
                 <key>sourceSize</key>
@@ -319,7 +319,7 @@
             <key>runnerJumpUp3.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,48},{47,56}}</string>
+                <string>{{190,2},{47,56}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -339,7 +339,7 @@
             <key>size</key>
             <string>{256,256}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:56d70bfedbb407cb2184faa92ca5f194:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:019e98482025b3f5822d4a5c70d29d1f:1/1$</string>
             <key>textureFileName</key>
             <string>parkour.png</string>
         </dict>

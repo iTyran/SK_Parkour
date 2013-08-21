@@ -23,6 +23,7 @@ var Runner = cc.Node.extend({
     jumpDownAction:null,
     crouchAction:null,
     spriteSheet:null,
+    _emitter:null,
     get offsetPx() {return 100;},
 
     ctor:function (spriteSheet, space) {
@@ -154,6 +155,8 @@ var Runner = cc.Node.extend({
         this.sprite.runAction(this.runningAction);
         // clean screen, to avoid rock
         this.getParent().cleanScreen();
+        this.unschedule(this.incredibleEmitter);
+        this._emitter=null;
     },
 
     incredibleHulk:function () {
@@ -161,6 +164,16 @@ var Runner = cc.Node.extend({
         // run faster
         this.body.applyImpulse(cp.v(200, 0), cp.v(0, 0));
         this.scheduleOnce(this.runningHulk, 3.0);
+
+        this._emitter = cc.ParticleFlower.create();
+        this.addChild(this._emitter, 10);
+        this.schedule(this.incredibleEmitter,0.1);
+    },
+
+    incredibleEmitter:function(){
+        //emitter
+        this._emitter.setPosition(this.sprite.getPositionX(), this.sprite.getPositionY());
+        log("emitter: "+this.sprite.getPositionX()+":" + this.sprite.getPositionY());
     },
 
     // return:

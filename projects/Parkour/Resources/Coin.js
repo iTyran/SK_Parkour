@@ -10,6 +10,11 @@ var Coin = cc.Class.extend({
         this._map = newMap;
     },
 
+    /** Constructor
+     * @param {cc.SpriteBatchNode *}
+     * @param {cp.Space *}
+     * @param {cc.p}
+     */
     ctor:function (spriteSheet, space, pos) {
         this.space = space;
 
@@ -55,6 +60,7 @@ var Coin = cc.Class.extend({
     },
 });
 
+// static method for Class Coin.
 var gCoinContentSize = null;
 Coin.getContentSize = function () {
     if (null == gCoinContentSize) {

@@ -6,6 +6,10 @@ var ObjectManager = cc.Class.extend({
     space:null,
     objects:[],
 
+    /** Constructor
+     * @param {cc.SpriteBatchNode *}
+     * @param {cp.Space *}
+     */
     ctor:function (spriteSheet, space) {
         this.spriteSheet = spriteSheet;
         this.space = space;
@@ -14,6 +18,10 @@ var ObjectManager = cc.Class.extend({
         this.objects = [];
     },
 
+    /** Calculating the coordinates of coins or rocks, which will add to the map
+     * @param {cc.Class *}
+     * @param {float}
+     */
     initObjectOfMap:function (map, mapWidth) {
         var initCoinNum = 7;
         var jumpRockHeight = Runner.getCrouchContentSize().height + g_groundHight;
@@ -33,9 +41,6 @@ var ObjectManager = cc.Class.extend({
 
         var startx = coinPoint_x - coinWidth/2*11;
         var xIncrement = coinWidth/2*3;
-        log("xIncrement: "+xIncrement+" startx:"+startx+" spriteWidth:"+coinWidth);
-        log("rockHeight:"+rockHeight);
-        log("map: "+map);
 
         //add a rock
         var rock = new Rock(this.spriteSheet, this.space,
@@ -45,12 +50,11 @@ var ObjectManager = cc.Class.extend({
         if(map == 0 && randomCoinFactor==1){
             randomCoinFactor = 2;
         }
-        log("randomRockFactor : "+randomRockFactor+" randomCoinFactor:"+randomCoinFactor );
 
-        //add 7 coins
+        //add coins
         for(i = 0; i < initCoinNum; i++)
         {
-            if((startx + i*xIncrement > RockPoint_x-rockWith/2) //岩石底部高度和陷阱顶部高度
+            if((startx + i*xIncrement > RockPoint_x-rockWith/2)
                 &&(startx + i*xIncrement < RockPoint_x+rockWith/2))
             {
                 var coin1 = new Coin(this.spriteSheet, this.space,
@@ -78,6 +82,9 @@ var ObjectManager = cc.Class.extend({
         this.objects.push(jumpRock);
     },
 
+    /** remove all objects of the map
+     * @param {int}
+     */
     recycleObjectOfMap:function (map) {
         while((function (obj, map) {
             for (var i = 0; i < obj.length; i++) {
@@ -91,6 +98,9 @@ var ObjectManager = cc.Class.extend({
         })(this.objects, map));
     },
 
+    /** remove specified object
+     * @param {cc.Class *} Coin or Rock
+     */
     remove:function (obj) {
         obj.removeFromParent();
         // find and delete obj

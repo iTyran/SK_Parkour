@@ -12,12 +12,14 @@ function SimpleRecognizer()
     this.result = "";
 }
 
+// be called in onTouchBegan
 SimpleRecognizer.prototype.beginPoint = function(x, y) {
     this.points = [];
     this.result = "";
     this.points.push(new Point(x, y));
 }
 
+// be called in onTouchMoved
 SimpleRecognizer.prototype.movePoint = function(x, y) {
     this.points.push(new Point(x, y));
     
@@ -56,6 +58,7 @@ SimpleRecognizer.prototype.movePoint = function(x, y) {
     }
 }
 
+// be called in onTouchEnded
 SimpleRecognizer.prototype.endPoint = function(x, y) {
     if (this.points.length < 3) {
         return "error";

@@ -11,6 +11,10 @@ var Map = cc.Class.extend({
     ground1:null,
     curMap:0,// [0, n]
 
+    /** Constructor
+     * @param {cc.Layer *}
+     * @param {cp.Space *}
+     */
     ctor:function (layer, space) {
         this.layer = layer;
         this.space = space;
@@ -39,14 +43,24 @@ var Map = cc.Class.extend({
         this.layer.addChild(this.ground1);
     },
 
+    /**
+     * @return width of the map sprite.
+     */ 
     getMapWidth:function () {
         return this.spriteWidth;
     },
 
+    
+    /**
+     * @return which map of the runner current run on.
+     */ 
     getCurMap:function () {
         return this.curMap;
     },
 
+    /**
+     * @param {float} X-coordinate of the eye of camera of PlayLayer
+     */
     checkAndReload:function (eyeX) {
         var newCur = parseInt(eyeX / this.spriteWidth);
         if (this.curMap == newCur) {

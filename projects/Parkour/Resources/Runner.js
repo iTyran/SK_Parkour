@@ -26,6 +26,10 @@ var Runner = cc.Node.extend({
     _emitter:null,
     get offsetPx() {return 100;},
 
+    /** Constructor
+     * @param {cc.SpriteBatchNode *}
+     * @param {cp.Space *}
+     */
     ctor:function (spriteSheet, space) {
         this._super();
 
@@ -40,11 +44,13 @@ var Runner = cc.Node.extend({
         this.sprite = cc.PhysicsSprite.createWithSpriteFrameName("runner0.png");
         this.runningSize = this.sprite.getContentSize();
 
+        // init crouchSize
         var tmpSprite = cc.PhysicsSprite.createWithSpriteFrameName("runnerCrouch0.png");
         this.crouchSize = tmpSprite.getContentSize();
 
         this.initAction();
         this.initBody();
+        // start with running shape
         this.initShape("running");
 
         this.sprite.setBody(this.body);
@@ -156,7 +162,7 @@ var Runner = cc.Node.extend({
         // clean screen, to avoid rock
         this.getParent().cleanScreen();
         this.unschedule(this.incredibleEmitter);
-        this._emitter=null;
+        this._emitter.removeFromParent();
     },
 
     incredibleHulk:function () {
@@ -166,14 +172,14 @@ var Runner = cc.Node.extend({
         this.scheduleOnce(this.runningHulk, 3.0);
 
         this._emitter = cc.ParticleFlower.create();
+        this._emitter.setPosition(this.sprite.getPositionX(), this.sprite.getPositionY());
         this.addChild(this._emitter, 10);
-        this.schedule(this.incredibleEmitter,0.1);
+        this.schedule(this.incredibleEmitter, 0.1);
     },
 
     incredibleEmitter:function(){
         //emitter
         this._emitter.setPosition(this.sprite.getPositionX(), this.sprite.getPositionY());
-        log("emitter: "+this.sprite.getPositionX()+":" + this.sprite.getPositionY());
     },
 
     // return:

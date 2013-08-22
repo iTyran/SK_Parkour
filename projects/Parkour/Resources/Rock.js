@@ -10,6 +10,11 @@ var Rock = cc.Class.extend({
         this._map = newMap; 
     },
 
+    /** Constructor
+     * @param {cc.SpriteBatchNode *}
+     * @param {cp.Space *}
+     * @param {cc.p}
+     */
     ctor:function (spriteSheet, space, pos) {
         this.space = space;
 
@@ -44,6 +49,7 @@ var Rock = cc.Class.extend({
     },
 });
 
+// static method for Class Rock.
 var gRockContentSize = null;
 Rock.getContentSize = function () {
     if (null == gRockContentSize) {

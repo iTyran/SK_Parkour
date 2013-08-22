@@ -1,4 +1,5 @@
 var GameOverLayer = cc.LayerColor.extend({
+
     // constructor
     ctor:function () {
         this._super();

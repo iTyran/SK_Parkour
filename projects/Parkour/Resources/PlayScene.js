@@ -109,6 +109,7 @@ var PlayLayer = cc.Layer.extend({
         log("==onTouchCancelled");
     },
 
+    // init space of chipmunk
     initPhysics:function() {
         this.space = new cp.Space();
         // Gravity
@@ -151,10 +152,12 @@ var PlayLayer = cc.Layer.extend({
         }
     },
 
+    // be called when the runner end it's incredible mode.
     cleanScreen:function () {
         this.objectManager.recycleObjectOfMap(this.map.getCurMap());
     },
 
+    // game logic
     update:function (dt) {
         if (this.gameStat == GameStat.over) {
             return;

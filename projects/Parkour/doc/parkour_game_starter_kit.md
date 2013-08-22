@@ -1,3 +1,4 @@
+![cover](./cover.png)
 # Parkour Game Starter Kit
 ## Introduction
 Parkour is a popular game genre. This starter kit equips you with the tools and skills you need to create a well polished and fun Parkour game for the iOS and Android using Cocos2D-x.
@@ -14,6 +15,26 @@ Draw a circle to open the runner's incredible mode, which the runner move faster
 The starter kit use Cocos2d-x javascript binding to implement.
 
 >The steps described in this article under Mac OS X, Xcode based development environment.
+
+## About the authors
+![KeNan Liu](./Author_KeNan_Liu.jpg)
+
+**KeNan Liu** is a developer and co-founder of  [ityran.com](http://www.ityran.com). He has 7 years experience in mobile software development at multi-platform. Such as Windows Mobile, Brew, iOS and Windows Phone 8.  He's current focus is on Cocos2d-x game development.
+You can follow KeNan on [Weibo](http://weibo.com/lkncastle). 
+
+![Iven Yang](./Author_Iven_yang.jpg)
+
+**Iven Yang** is a developer currently focusing on Cocos2D-x development, and the co-founder of team Tyran.
+
+## About the editor
+![YiMing Guo](./Author_YiMing_Guo.jpg)
+
+**Yiming Guo** is a undergraduate who are interested in mobile networking, cloud computing and data mining.  Now is interning at Chengdu, focus on Cocos2d-x game development.
+
+## About the artist
+![Fan Wang](./Author_Fan_Wang.jpg)
+
+**Fan Wang** is a artist with 4 years of experience.
 
 ## Chapter 1: Getting Started
 >Note: If you are already familiar with creating multi-platform project of Cocos2d-x, then you might want to skip ahead to the next section.

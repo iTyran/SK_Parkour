@@ -17,7 +17,10 @@ var MainLayer = cc.Layer.extend({
         this.addChild(spriteBG);
 
         cc.MenuItemFont.setFontSize(60);
-        var menuItemPlay = cc.MenuItemFont.create("Play", this.onPlay, this);
+        var menuItemPlay = cc.MenuItemSprite.create(
+            cc.Sprite.create("start_n.png"),
+            cc.Sprite.create("start_s.png"),
+            this.onPlay, this);
         var menu = cc.Menu.create(menuItemPlay);
         menu.setPosition(centerPos);
         this.addChild(menu);

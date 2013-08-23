@@ -155,7 +155,7 @@ var Runner = cc.Node.extend({
 
     runningHulk:function () {
         // slow down
-        this.body.applyImpulse(cp.v(-200, 0), cp.v(0, 0));
+        this.body.applyImpulse(cp.v(-400, 0), cp.v(0, 0));
         this.stat = RunnerStat.running;
         this.sprite.stopAllActions();
         this.sprite.runAction(this.runningAction);
@@ -168,7 +168,7 @@ var Runner = cc.Node.extend({
     incredibleHulk:function () {
         this.stat = RunnerStat.incredible;
         // run faster
-        this.body.applyImpulse(cp.v(200, 0), cp.v(0, 0));
+        this.body.applyImpulse(cp.v(400, 0), cp.v(0, 0));
         this.scheduleOnce(this.runningHulk, 3.0);
 
         this._emitter = cc.ParticleFlower.create();

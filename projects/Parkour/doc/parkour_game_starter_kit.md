@@ -3,7 +3,7 @@
 ## Introduction
 Parkour is a popular game genre. This starter kit equips you with the tools and skills you need to create a well polished and fun Parkour game for the iOS and Android using Cocos2D-x.
 
-They say a picture is worth a thousand words, so here’s a sneak peek of what you will be capable of doing by the end of this book:
+Picture speaks louder than words, so here’s a sneak peek of what you will be capable of doing by the end of this book:
 
 ![overview](./overview.png)
 
@@ -81,7 +81,7 @@ Copy AppMacros.h from HelloCpp to Parkour project.
 
     cp ~/Documents/project/cocos2d-x-2.1.4/samples/Cpp/HelloCpp/Classes/AppMacros.h ~/Documents/project/cocos2d-x-2.1.4/projects/Parkour/Classes
 
-Drag AppMacros.h onto the **Classes** folder in Xcode project. In the pop-up dialog, make sure that **Add to targets** is checked, then click Finish.
+Drag AppMacros.h into the **Classes** folder in Xcode project. In the pop-up dialog, make sure that **Add to targets** is checked, then click Finish.
 
 Open AppDelegate.cpp, include AppMacros.h at the top of the file.
 

@@ -390,7 +390,7 @@ static bool _initWithString(const char * pText, cocos2d::CCImage::ETextAlign eAl
         
         
         // actually draw the text in the context
-        // XXX: ios7 casting
+		// XXX: ios7 casting
         [str drawInRect:CGRectMake(textOriginX, textOrigingY, textWidth, textHeight) withFont:font lineBreakMode:NSLineBreakByWordWrapping alignment:(NSTextAlignment)align];
         
         // pop the context

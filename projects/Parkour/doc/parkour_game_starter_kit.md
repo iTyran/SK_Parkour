@@ -44,7 +44,7 @@ Open your web browser and navigate to the [Cocos2D-x download page](http://www.c
 
 There are several choices of which version of Cocos2D to download. For this Starter Kit, you will be using the latest stable version of Cocos2d-x.
 
-At the time of writing this was cocos2d-x-2.1.4. Download it and extract it to a location of your choice.
+At the time of writing this was cocos2d-x-2.1.5. Download it and extract it to a location of your choice.
 
 ### Creating a multi-platform project of Cocos2d-x
 Open **Terminal** app. Use the **cd** command to switch to the directory where you extracted the Cocos2D-x archive, like this:
@@ -81,7 +81,7 @@ Copy AppMacros.h from HelloCpp to Parkour project.
 
     cp ~/Documents/project/cocos2d-x-2.1.4/samples/Cpp/HelloCpp/Classes/AppMacros.h ~/Documents/project/cocos2d-x-2.1.4/projects/Parkour/Classes
 
-Drag AppMacros.h into the **Classes** folder in Xcode project. In the pop-up dialog, make sure that **Add to targets** is checked, then click Finish.
+Drag AppMacros.h onto the **Classes** folder in Xcode project. In the pop-up dialog, make sure that **Add to targets** is checked, then click Finish.
 
 Open AppDelegate.cpp, include AppMacros.h at the top of the file.
 
@@ -210,13 +210,13 @@ Open "MainScene.js" and replace its contents with the following:
 
 Some important points to note:
 
-1. **require()** will load a js module, use file name as parameter. "jsb.js" is the necessary module to be load if you want to use Cocos2d-x jsb to develop game. And a module only need load once in the runtime, then can use it anywhere.
+1. **require()** will load a js module, use file name as parameter. "jsb.js" is the necessary module to be load if you want to use Cocos2d-x jsb to develop game. And a module only need to be loaded once in the runtime, then can use it anywhere.
 2. **MainLayer = cc.Layer.extend();** It's the Cocos2d-x jsb way of object inheritance, it comes from [John Resig's javascript Inheritance](http://ejohn.org/blog/simple-javascript-inheritance/). In this case, we are defining a new class inheritance from CCLayer with name MainLayer.
 3. **ctor()** will be called if new a MainLayer. It's the jsb way of constructor. Remember to call **this._super()** if you override this function. 
 4. Override **init()** also need call **this._super()**. We creates a sprite using the background image you added previously, positions it at the center of the screen and adds it as a child of the MainLayer. Create a menu with a item named "Play", set item callback to function **onPlay()**.
-5. Just log a message in function onPlay(), it ok for now.
+5. Just log a message in function onPlay(), it's ok for now.
 6. **MainLayer.scene = function (){};** define a static function for MainLayer.
-7. Time to load main scene now. Use **cc.Director.getInstance()** get the director, tell director run the first scene.
+7. Time to load main scene. Use **cc.Director.getInstance()** get the director, tell director run the first scene.
 
 >Note:Here **director** and **winSize** are declare as global variables. Both are frequently used.
 
@@ -231,27 +231,27 @@ The main scene consists of three layers.
 
 ### PlayLayer
 
-The PlayLayer contain the runner, maps, coins and rocks.
+The PlayLayer contains the runner, maps, coins and rocks.
 
-The runner move forward, the camera of the layer move forward. In this way to keep the runner in the visible range. 
+The runner moves forward, the camera of the layer moves forward. In this way to keep the runner in the visible range. 
 
-The background is composition of two horizontal map. When then runner move from the first map to the second map, the first map will be reload and place to right of the second map. Map loop repeating in this way.
+The background is composition of two horizontal maps. When then runner move from the first map to the second map, the first map will be reload and place to right of the second map. Map loop repeating in this way.
 
 ### StatusLayer
 
-StatusLayer is on top of PlayLayer. Coins count and distance statistics will display in this layer.
+StatusLayer is on top of the PlayLayer. Coins count and distance statistics will display in this layer.
 
 Why these two separate out on a new layer?
 
-If coins count and distance statistics add to PlayLayer, they will disappear while the camera moving go with the runner. Separate them from PlayLayer will keep things simple.
+If coins count and distance statistics add to PlayLayer, they will disappear when the camera moving with the runner. Separate them from PlayLayer will keep things simple.
 
 ### GameOverLayer
 GameOverLayer is a color layer. 
 
-GameOverLayer will be display when the runner hit the rock, and give a choose to restart game.
+GameOverLayer will be displayed when the runner hits the rock, and gives a choice to restart game.
 
 ## Chapter 5: Setting Up PlayLayer with Physics World
-PlayLayer is the most import layer of PlayScene. This layer handling player input and calculating collisions and objects movement and so on.
+PlayLayer is the most important layer of PlayScene. This layer handling player input, calculating collisions, objects movement and so on.
 
 ### Create a js file and add to Xcode project
 First, create a file  with name "PalyScene.js" in **Resource** directory and drag onto the **Resource** folder in Xcode project. In the pop-up dialog, make sure that **Add to targets** is checked, then click Finish.
@@ -319,19 +319,19 @@ Open "PlayScene.js" and replace it's contents with the following:
 
 Some important points to note:
 
-1. Define class member variable here. The left side of the semicolon is variable's name, and the right side is his initial value.
+1. Define class member variable here. The left side of the semicolon is variable's name, and the right side is its initial value.
 2. Schedules the "update" method
-3. In this game, we use Chipmunk2D physics engine. Here are two sets of JSB APIs of Chipmunk. One is object-oriented, another is process-oriented. we just use the **object-oriented** one, which use more friendly. 
+3. In this game, we use Chipmunk2D physics engine. Here are two sets of JSB APIs of Chipmunk. One is object-oriented, another is process-oriented. We just use the **object-oriented** one, which is more friendly. 
 4. **new cp.Space()** is the object-oriented API to create a Chipmunk physics world. Corresponding process-oriented API is cp.spaceNew().
 5. Set the gravity of physics world. cp.v() is equal to cc.p().
-6. In parkour game the runner will running on the ground. The chipmunk way to make a ground is use static shape. New a SegmentShape from the static body of the space, and then add it to the space.
-7. update() will be called on every frame. We need call chipmunk step here to make physics world work.
+6. In parkour game the runner will run on the ground. The chipmunk way to make a ground is using static shape. New a SegmentShape from the static body of the space, and then add it to the space.
+7. update() will be called on every frame. We need to call chipmunk step here to make physics world work.
 
 The global variable g_groundHight is defined in file "Utils.js".
 
     var g_groundHight = 50;
 
-To load the PlayScene, we need go back to "MainScene.js", add the following in the top of the file.
+To load the PlayScene, we need to go back to "MainScene.js", add the following in the top of the file.
 
     require("Utils.js");
     require("PlayScene.js");
@@ -345,14 +345,14 @@ And replace onPlay with the following:
 Build and run, click the "Play" button, you will see a black world on the screen. We will add something in following chapter. 
 
 ## Chapter 6: Running This Way
-In this chapter we will add a sprite to the PlayLayer and make it running. We called this sprite  the runner.
+In this chapter we will add a sprite to the PlayLayer and make it running. We call this sprite  the runner.
 
 To make it running, we need an animated sprite. The animation is all thanks to the sprite sheet that was part of the Resource folder. 
 
 The sprite sheet consists of parkour.plist and parkour.png.
-These files were generated using **TexturePacker**, a sprite sheet creation tool.
+These files were generated by using **TexturePacker**, a sprite sheet creation tool.
 
->Note: Sprite sheet help reduce memory consumption, speed up the drawing process and keep the frame rate high.
+>Note: Sprite sheet helps reduce memory consumption, speed up the drawing process and keep the frame rate high.
 
 The animation composed of a series of images. 
 
@@ -360,11 +360,11 @@ As following picture:
 
 ![runing](./running.png)
 
-Drag all of the image to TexturePacker, them click Publish to output the sprite sheet. The usage of TexturePacker can find from his [official site](http://www.codeandweb.com/texturepacker/documentation).
+Drag all the images to TexturePacker, then click Publish to output the sprite sheet. The usage of TexturePacker can find from its [official site](http://www.codeandweb.com/texturepacker/documentation).
 
-Now we got two file "parkour.plist" and "parkour.png", move them to directory **Resource/iphone**.
+Now we got two files "parkour.plist" and "parkour.png", move them to directory **Resource/iphone**.
 
-Create a js file named "Runner.js" and add to Xcode project as we done before.
+Create a js file named "Runner.js" and add it to Xcode project as we done before.
 Replace it's contents with following:
 
     // 1.
@@ -462,11 +462,11 @@ Replace it's contents with following:
 
 Some important points to note:
 
-1. JS way to define a enum for runner state. The runner have many state, but for this chapter we just care the running state.
-2. cc.PhysicsSprite have no extend method, so the Runner class is extend from cc.Node. 
-3. The Runner will create and place in physics world of PlayLayer. So reference space in constructor. Reference the sprite sheet pass from PlayLayer too.
-4. Before you call **cc.PhysicsSprite.createWithSpriteFrameName** to create physics sprite, you need to initialize the sprite frame cache from sprite sheet, which create by TexturePacker. This part of work will done in PlayLayer. "runner0.png" is the file name of first frame of animation.
-5. In **initAction**, you create a animation from sprite frame cache, and make this animation repeat forever. Note this line of code **this.runningAction.retain();** --- retain() will avoid the CCObject be GC.
+1. JS way to define a enum for runner state. The runner has many state, but for this chapter we just care the running state.
+2. cc.PhysicsSprite have no extend method, so the Runner class is extended from cc.Node. 
+3. The Runner will be created and placed in physics world of PlayLayer. So reference space in constructor. Reference the sprite sheet pass from PlayLayer too.
+4. Before you call **cc.PhysicsSprite.createWithSpriteFrameName** to create physics sprite, you need to initialize the sprite frame cache from sprite sheet, which created by TexturePacker. This part of work will done in PlayLayer. "runner0.png" is the file name of first frame of animation.
+5. In **initAction**, you create a animation from sprite frame cache, and make this animation repeats forever. Note this line of code **this.runningAction.retain();** --- retain() will avoid the CCObject be GC.
 6. In **initBody**, create a chipmunk body for the runner. And set it initial velocity.
 7. In **initShape**, create a chipmunk shape which size equal to sprite size.
 8. Associate physics body with the sprite.
@@ -474,7 +474,7 @@ Some important points to note:
 10. Add the sprite to spriteSheet.
 11. Record the state, we will use it in future chapter.
 12. Override onExit to release runningAction, remember to call **this._super()** if you override this function. 
-13. This helper function will use for calculate camera moving in PlayLayer.
+13. This helper function will be use to calculate camera moving in PlayLayer.
 
 Switch to **PlayScene.js** and add the following in the top of the file:
 
@@ -506,18 +506,18 @@ Then go to update() and make the following changes:
     camera.setEye(this.lastEyeX, 0, eyeZ);
     camera.setCenter(this.lastEyeX, 0, 0);
 
-* The new position of the runner be calculated in physics world within every frame. The camera need to follow the runner to keep the runner inside.
+* The new position of the runner will be calculated in physics world within every frame. The camera need to follow the runner to keep the runner inside.
 
-Build and run, and the you can see a boy running in the screen.
+Build and run, and then you can see a boy running in the screen.
 
 ## Chapter 7: Gesture Recognizer
 So far the runner can move himself forward. Before add user controls to the runner, you need to handle player's input.
 
-In the game use gesture control, include swipe up, swipe down and draw circle.
+In the game we use gesture control, include swipe up, swipe down and draw circle.
 
 There is an open source project **$1 Unistroke Recognizer**, which can recognize 16 gesture types include circle. And the **$1 Unistroke Recognizer** just have a JavaScript version, which can be easily import into Cocos2d-x JSB project.
 
-But **$1 Unistroke Recognizer** has a drawback: difficult to distinguish swipe up and swipe down. You will recognizer these two gestures by yourself.
+But **$1 Unistroke Recognizer** has a drawback: difficult to distinguish swipe up and swipe down. You have to recognize these two gestures by yourself.
 
 ### Simple Recognizer
 Simple Recognizer can recognize simple gesture include swipe up, swipe down, swipe left and swipe right.
@@ -599,7 +599,7 @@ Replace it's contents with following:
 
 Some important points to note:
 
-1. Define the Point same as dollar library. This allows the project to use both libraries become simple.
+1. Define the Point as same as dollar library. This allows the project to use both libraries become simple.
 2. Each time when touch point moving, calculate difference of the x-axis and y-axis  between current touch point and previous touch point. 
 3. In this case, movement tendency of touch point on the x-axis direction.
 4. In this case, movement tendency of touch point on the y-axis direction.
@@ -685,7 +685,7 @@ Add following codes to PlayLayer:
         log("==onTouchCancelled");
     },
 
-Simple Recognizer is faster than $1 Unistroke Recognizer. Use it recognize  swipe up and swipe down first, if it fail then use $1 Unistroke Recognizer.
+Simple Recognizer is faster than $1 Unistroke Recognizer. Use it recognize  swipe up and swipe down first, if its fail then use $1 Unistroke Recognizer.
 
 Build and run, try swipe up, swipe down and draw a circle. You will see following log.
 
@@ -715,7 +715,7 @@ Go back to **Runner.js**, finishing the define of RunnerStat by adding following
     RunnerStat.crouch = 3;
     RunnerStat.incredible = 4;
 
-Define new class member variable for the runner.
+Define new class member variables for the runner.
 
     crouchSize:null,
     jumpUpAction:null,
@@ -737,7 +737,7 @@ to
 
     this.initShape("running");
 
-Of course, also need to modify the implement of initShape(). Replace it's content with following:
+Of course, we also need to modify the implement of initShape(). Replace it's content with following:
 
     initShape:function (type) {
         if (this.shape) {
@@ -755,7 +755,7 @@ Of course, also need to modify the implement of initShape(). Replace it's conten
         this.space.addShape(this.shape);
     },
 
-Initialize three additional animation: jumpUpAction, jumpDownAction and crouchAction in initAction().
+Initialize three additional animations: jumpUpAction, jumpDownAction and crouchAction in initAction().
 
     // init jumpUpAction
     animFrames = [];
@@ -793,7 +793,7 @@ Initialize three additional animation: jumpUpAction, jumpDownAction and crouchAc
     this.crouchAction = cc.Animate.create(animation);
     this.crouchAction.retain();
 
-Ok, now you are done for initialize. Let's look at how to make a jump. Add the following methods inside Runner class:
+Ok, now you are done for initialize. Let's look at how to make a jump. Add the following method inside Runner class:
 
     jump:function () {
         if (this.stat == RunnerStat.running) {
@@ -898,7 +898,7 @@ Until now, the runner ran alone in a black world.
 It's time to add a background image.
 
 Background image composed by two maps, which divided into upper and lower part.
-When the runner run over the gap of two maps, the first map will be reload and placed to the back of the second map.
+When the runner run over the gap of two maps, the first map will be reloaded and placed to the back of the second map.
 
 Here's a simple function that format an integer to a specific length in javascript.
 Switch to **Utils.js** and add following codes:
@@ -1039,13 +1039,13 @@ Build and run the project, and you should see the following displayed on screen:
 ## Chapter 10: Adding Coins and Rocks
 Until now, you have a runner run in map world, but a complete parkour game requires two more things: coin and rock.
 
-Coin is the game rewords. When the runner hit coin, the coin will disappear.
-But rock is an obstacle. When the runner hit rock, the game will over.
+Coin is the game rewords. When the runner hits the coin, the coin will disappear.
+But rock is an obstacle. When the runner hits the rock, game over.
 
 In addition to the collision handling, they have no difference.
 Let's start with coin.
 
-Create a js file named "Coin.js" and add to Xcode project as we done before. Replace it's contents with following:
+Create a js file named "Coin.js" and add it to Xcode project as we done before. Replace its contents with following:
 
     var Coin = cc.Class.extend({
         space:null,
@@ -1118,7 +1118,7 @@ Create a js file named "Coin.js" and add to Xcode project as we done before. Rep
 
 Some important points to note:
 
-1. Which map the coin belong to. This value will be set in **ObjectManager.js**, which we will introduce later.
+1. Which map the coin belong to. This value will be set in **ObjectManager.js**, which we will be introduce later.
 2. Initialize the coin animation.
 3. Use static body for coin to avoid the influence of gravity.
 4. Sensors only call collision callbacks, and never generate real collisions
@@ -1184,7 +1184,7 @@ Next is the rock, create "Rock.js" with following code:
         return gRockContentSize;
     };
 
-Rock and coin has the following two differences:
+Rock and coin have the following two differences:
 
 1. Rock have two textures, and the choose according to value of Y-coordinate.
 2. The shape of rock is box, not circle.
@@ -1192,7 +1192,7 @@ Rock and coin has the following two differences:
 Now you have coin and rock, but how to put them on the map? They can not overlap and maintain proper distance.
 It's time to introduce **ObjectManager.js**.
 
-Create a js file named "ObjectManager.js" and add to Xcode project. Replace it's contents with following:
+Create a js file named "ObjectManager.js" and add it to Xcode project. Replace its contents with following:
 
     require("Coin.js");
     require("Rock.js");
@@ -1307,10 +1307,10 @@ Some important points to note:
 2. Main logic of initialization objects for map.
     * Create 2 random num to Confirm which point we create coin and rock.
     * Calculate the start points of rock and coin into every map though random factor.
-    * Add every object into map. Take coins as a example, if the start point of coin is the same as rock's we must change the height of every coin the point is higher than rock's height or lower than rock's bottom.
+    * Add every object into map. Take coins as a example, if the start point of coin is the same as rock's then we must change the height of every coin the point is higher than rock's height or lower than rock's bottom.
     * Add other rocks to map.
 3. Every time the map reload, object in this map will be recycled.
-4. When the runner eat a coin, remove coin from its parent and objects array.
+4. When the runner get a coin, remove coin from its parent and objects array.
 
 Everythins is ready, only integrate to PlayScene.js.
 
@@ -1318,7 +1318,7 @@ Switch to **PlayScene.js**, add the following in the top of the file.
 
     require("ObjectManager.js");
 
-Define new class member variable.
+Define new class member variables.
 
     objectManager:null,
     shapesToRemove:[],
